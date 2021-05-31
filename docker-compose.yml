@@ -1,0 +1,15 @@
+version: '3'
+services:
+    mongo:
+        image: "mongo"
+        container_name: mongo
+        restart: always
+    tweeter:
+        build: .
+        ports:
+            - "8083:8081"
+        container_name: "tweeter"
+        links:
+            - mongo
+        depends_on:
+            - mongo
